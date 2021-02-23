@@ -1,8 +1,40 @@
 @extends('layouts.app')
+
 @section('title')
-Articles
+Article 
     
 @endsection
 @section('main_content')
-<h1>Articles</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Title</th>
+            <th>Body</th>
+            <th>Actions</th>
+        </tr>
+
+
+
+    </thead>
+
+
+
+
+<tbody>
+    @forelse ($articles as $value)
+    <tr>
+        <td>{{$value->id}}</td>
+        <td>{{$value->title}}</td>
+        <td>{{$value->body}}</td>
+    </tr>
+    @empty
+    <tr>
+        <td>no articles in here</td>
+    </tr>
+    @endforelse
+</tbody>
+</table>
+    
 @endsection
