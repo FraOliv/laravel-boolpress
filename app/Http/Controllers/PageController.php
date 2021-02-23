@@ -15,9 +15,21 @@ class PageController extends Controller
     {
         return view('pages.article');
     }
+    public function Category()
+    {
+        return view('pages.category');
+    }
     public function articles_api()
     {
         return view('spa.articles');
+    }
+    public function categories_api()
+    {
+        return view('spa.categories');
+    }
+    public function tags_api()
+    {
+        return view('spa.tags');
     }
 
 }

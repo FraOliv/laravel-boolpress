@@ -18,3 +18,14 @@ Route::get('articleslist', function () {
         'data' => App\Article::all()
     ]);
 });
+
+Route::get('categorieslist', function () {
+    return response()->json([
+        'data' => App\Category::all()
+    ]);
+});
+Route::get('tagslist', function () {
+    return response()->json([
+        'data' => App\Tag::all()
+    ]);
+});

@@ -16,6 +16,7 @@
         <nav class="navbar">
                     <a href="{{route('home')}}"> Home</a>
                     <a href="{{route('article.index')}}">Articles</a>
+                    <a href="{{route('category.index')}}">Categories</a>
                     <a href="{{route('articles_api')}}">Articles API Laravel</a>
                  
                     
