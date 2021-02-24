@@ -27,7 +27,10 @@ Article
     <tr>
         <td>{{$value->id}}</td>
         <td>{{$value->title}}</td>
+         <td>{{$value->author}}</td>
+         <td>{{$value->subtitle}}</td>
         <td>{{$value->body}}</td>
+         <td>{{$value->reading_time}}</td>
     </tr>
     @empty
     <tr>

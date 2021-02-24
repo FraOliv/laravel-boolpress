@@ -17,6 +17,7 @@ class CategorySeeder extends Seeder
             $newCategory = new Category();
             $newCategory->genre = $faker->word();
             $newCategory->over18 = $faker->boolean();
+            
          
             $newCategory->save();
         }

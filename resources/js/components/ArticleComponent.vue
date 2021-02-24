@@ -4,13 +4,14 @@
             <div class="col-md-8">
                 <div class="card" v-for="article in articles" :key="article.id">
                     <div class="card-header">
-                        <span>{{article.title }}</span>
-                         <span>{{article.author }}</span>
-                          <span>{{article.reading_time }}</span>
+                        <p>Title: {{article.title }}</p>
+                          <p>Category id: {{article.category_id }}</p>
+                         <p>Author: {{article.author }}</p>
+                          <p>Reading time:{{article.reading_time }} minutes</p>
                     </div>
 
                     <div class="card-body">
-                        <p>{{article.body }}</p>
+                        <p> body:{{article.body }}</p>
                         <span>
                             Data :
                             {{

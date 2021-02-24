@@ -1981,6 +1981,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   mounted: function mounted() {
     var _this = this;
@@ -37660,15 +37661,23 @@ var render = function() {
           _vm._l(_vm.articles, function(article) {
             return _c("div", { key: article.id, staticClass: "card" }, [
               _c("div", { staticClass: "card-header" }, [
-                _c("span", [_vm._v(_vm._s(article.title))]),
+                _c("p", [_vm._v("Title: " + _vm._s(article.title))]),
                 _vm._v(" "),
-                _c("span", [_vm._v(_vm._s(article.author))]),
+                _c("p", [
+                  _vm._v("Category id: " + _vm._s(article.category_id))
+                ]),
                 _vm._v(" "),
-                _c("span", [_vm._v(_vm._s(article.reading_time))])
+                _c("p", [_vm._v("Author: " + _vm._s(article.author))]),
+                _vm._v(" "),
+                _c("p", [
+                  _vm._v(
+                    "Reading time:" + _vm._s(article.reading_time) + " minutes"
+                  )
+                ])
               ]),
               _vm._v(" "),
               _c("div", { staticClass: "card-body" }, [
-                _c("p", [_vm._v(_vm._s(article.body))]),
+                _c("p", [_vm._v(" body:" + _vm._s(article.body))]),
                 _vm._v(" "),
                 _c("span", [
                   _vm._v(
