@@ -11,8 +11,12 @@ Article
         <tr>
             <th>ID</th>
             <th>Title</th>
-            <th>Body</th>
-            <th>Actions</th>
+            <th>Category Genre</th>
+            <th>Over 18</th>
+            <th>Author</th>
+            <th>Article's Subtitle</th>
+            <th>Article's Body</th>
+            <th>Reading time</th>
         </tr>
 
 
@@ -27,10 +31,13 @@ Article
     <tr>
         <td>{{$value->id}}</td>
         <td>{{$value->title}}</td>
+        <td>{{$value->category->genre}}</td>
+        <td>{{$value->category->over18 ? 'si' : 'no'}}</td>
          <td>{{$value->author}}</td>
          <td>{{$value->subtitle}}</td>
         <td>{{$value->body}}</td>
          <td>{{$value->reading_time}}</td>
+
     </tr>
     @empty
     <tr>

@@ -12,6 +12,7 @@ Descrizione Post
 <div class="container" class="d-flex">
     <div>{{$post->title}}</div>
      <div>{{$post->body}}</div>
+     
 </div>
 
     
