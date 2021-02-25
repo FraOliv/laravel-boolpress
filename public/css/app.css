@@ -10944,3 +10944,27 @@ a.text-dark:focus {
   }
 }
 
+body {
+  background-color: #112034;
+}
+
+h1 {
+  text-align: center;
+}
+
+.navbar {
+  background-color: #0cd977;
+}
+
+.navbar a {
+  color: white;
+}
+
+.jumbotron {
+  text-align: center;
+}
+
+.table {
+  color: white;
+}
+

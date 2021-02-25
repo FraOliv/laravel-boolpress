@@ -2026,10 +2026,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   mounted: function mounted() {
     var _this = this;
@@ -37828,15 +37824,11 @@ var render = function() {
           _vm._l(_vm.categories, function(category) {
             return _c("div", { key: category.id, staticClass: "card" }, [
               _c("div", { staticClass: "card-body" }, [
-                _c("p", [_vm._v(" Category Genre:" + _vm._s(category.genre))]),
+                _c("p", [_vm._v(" Category Genre: " + _vm._s(category.genre))]),
                 _vm._v(" "),
-                _c("span", [
+                _c("p", [
                   _vm._v(
-                    "\n                        Data :\n                        " +
-                      _vm._s(
-                        new Date(category.created_at).toLocaleString("it")
-                      ) +
-                      "\n                    "
+                    " Over 18: " + _vm._s(category.over18 ? "si" : "no") + " "
                   )
                 ])
               ])

@@ -25,7 +25,7 @@
                
         </nav>
 
-        <main>
+        <main class="main_content">
             @yield('main_content')
         </main>
         <script src="{{asset('js/app.js')}}"></script>

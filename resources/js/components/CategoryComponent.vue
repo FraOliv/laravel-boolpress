@@ -5,13 +5,9 @@
                 <div class="card" v-for="category in categories" :key="category.id">
 
                     <div class="card-body">
-                        <p> Category Genre:{{category.genre }}</p>
-                        <span>
-                            Data :
-                            {{
-                                new Date(category.created_at).toLocaleString("it")
-                            }}
-                        </span>
+                        <p> Category Genre: {{category.genre }}</p>
+                        <p> Over 18: {{category.over18 ? 'si' : 'no'}} </p>
+                       
                     </div>
                 </div>+
             </div>
