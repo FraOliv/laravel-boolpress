@@ -20,6 +20,8 @@ Route::resource('article', 'ArticleController');
 
 Route::resource('category', 'CategoryController');
 
+Route::resource('tag', 'TagController');
+
 Route::get('articles_api' , 'PageController@articles_api')->name('articles_api');
 
 Route::get('categories_api', 'PageController@categories_api')->name('categories_api');

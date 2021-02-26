@@ -9,9 +9,13 @@ class DatabaseSeeder extends Seeder
      *
      * @return void
      */
-    public function run()
-    {
-         $this->call(ArticleSeeder::class);
+    public function run(){
+        $this->call([
+            CategorySeeder::class,
+            TagSeeder::class,
+            ArticleSeeder::class,
+            
+        ]);
     }
 }
  

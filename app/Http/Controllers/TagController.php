@@ -15,7 +15,7 @@ class TagController extends Controller
     public function index()
     {
         $tags = Tag::all();
-        return view('Tag.index', compact('tags'));
+        return view('tag.index', compact('tags'));
     }
 
     /**
@@ -25,7 +25,8 @@ class TagController extends Controller
      */
     public function create()
     {
-        //
+        return view('tag.create');
+
     }
 
     /**
@@ -36,7 +37,12 @@ class TagController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $tag = new Tag();
+        $tag->name = request('name');
+        $tag->views = request('views');
+        $tag->shares = request('shares');
+        $tag->save();
+        return redirect()->route('tag.index');
     }
 
     /**
@@ -47,7 +53,7 @@ class TagController extends Controller
      */
     public function show(Tag $tag)
     {
-        //
+        return view('tag.show', compact('tag'));
     }
 
     /**
@@ -58,7 +64,7 @@ class TagController extends Controller
      */
     public function edit(Tag $tag)
     {
-        //
+        return view('tag.edit', compact('tag'));
     }
 
     /**
@@ -70,7 +76,10 @@ class TagController extends Controller
      */
     public function update(Request $request, Tag $tag)
     {
-        //
+        $data = $request->all();
+        $tag->update($data);
+
+        return redirect()->route('tag.index'); 
     }
 
     /**
@@ -81,6 +90,8 @@ class TagController extends Controller
      */
     public function destroy(Tag $tag)
     {
-        //
+        $tag->delete();
+
+        return redirect()->route('tag.index'); 
     }
 }

@@ -23,6 +23,31 @@
     <textarea class="form-control" name="subtitle" id="subtitle" rows="3" required></textarea>
     <small class="text-muted">Inserisci il author del post</small>
   </div>
+ <div class="form-group">
+   <label for="categories">categories</label>
+     <select class="form-control" name="category_id" id="">
+            @foreach($categories as $item)
+
+            <option value="{{$item->id}}" name="category_id">
+            {{$item->genre}}
+            </option>
+            @endforeach
+
+        </select>
+ </div>
+ <div class="form-group">
+   <label for="over18">is this Article for Adults?</label>
+     <select class="form-control" name="category_id" id="">
+            @foreach($categories as $item)
+
+            <option value="{{$item->id}}" name="category_id">
+            {{$item->over18}}
+            </option>
+            @endforeach
+
+        </select>
+ </div>
+  
 
     <div class="form-group">
     <label for="author">Author</label>
