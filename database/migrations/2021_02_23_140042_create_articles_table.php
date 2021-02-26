@@ -16,7 +16,7 @@ class CreateArticlesTable extends Migration
         Schema::create('articles', function (Blueprint $table) {
             $table->id();
             $table->string('title', 100);
-            $table->string('subtitle', 150);
+            $table->string('subtitle', 150)->nullable();
             $table->text('body');
             $table->string('author');
             $table->integer('reading_time');
@@ -34,7 +34,6 @@ class CreateArticlesTable extends Migration
      */
     public function down()
     {
-   
         Schema::dropIfExists('articles');
     }
     }

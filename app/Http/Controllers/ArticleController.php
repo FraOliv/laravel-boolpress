@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Article;
+
 use Illuminate\Http\Request;
 
 class ArticleController extends Controller
@@ -16,6 +17,7 @@ class ArticleController extends Controller
     {
         $articles = Article::all();
         return view('article.index', compact('articles'));
+        
     }
 
     /**
@@ -25,7 +27,7 @@ class ArticleController extends Controller
      */
     public function create()
     {
-        //
+        return view('article.create');
     }
 
     /**
@@ -36,7 +38,15 @@ class ArticleController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $article = new Article();
+        $article->title = request('title');
+        $article->body = request('body');
+        $article->subtitle = request('subtitle');
+        $article->author = request('author');
+        $article->reading_time = request('reading_time');    
+  
+        $article->save();
+        return redirect()->route('article.index');
     }
 
     /**
@@ -47,7 +57,7 @@ class ArticleController extends Controller
      */
     public function show(Article $article)
     {
-        //
+        return view('article.show', compact('article'));
     }
 
     /**
@@ -58,7 +68,7 @@ class ArticleController extends Controller
      */
     public function edit(Article $article)
     {
-        //
+        return view('article.edit', compact('article'));
     }
 
     /**
@@ -70,7 +80,10 @@ class ArticleController extends Controller
      */
     public function update(Request $request, Article $article)
     {
-        //
+        $data = $request->all();
+        $article->update($data);
+
+        return redirect()->route('article.index'); 
     }
 
     /**
@@ -81,6 +94,8 @@ class ArticleController extends Controller
      */
     public function destroy(Article $article)
     {
-        //
+        $article->delete();
+
+        return redirect()->route('article.index'); 
     }
 }

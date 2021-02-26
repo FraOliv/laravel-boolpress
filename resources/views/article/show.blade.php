@@ -10,8 +10,8 @@ Descrizione Post
 @section('main_content')
 
 <div class="container" class="d-flex">
-    <div>{{$post->title}}</div>
-     <div>{{$post->body}}</div>
+    <div>{{$article->title}}</div>
+     <div>{{$article->body}}</div>
      
 </div>
 
