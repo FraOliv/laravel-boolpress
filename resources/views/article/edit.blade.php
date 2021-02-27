@@ -5,43 +5,70 @@ Edit
 @endsection
 @section('main_content')
 
-<form action="{{route('article.update', ['article'=>$article->id])}}" method="post">
-   
-
-    <div class="form-group">
-    @csrf
-    @method('PUT')
-    <label for="title">Title</label>
-    <input type="text" name="title" value="{{$article->title}}" id="title" required class="form-control"  aria-describedby="helpId" required>
-    <small id="helpId" class="text-muted">Insert Title</small>
-</div>
 
 
-<div class="form-group">
-    <label for="subtitle">subtitle</label>
-    <input type="text" name="body" value="{{$article->subtitle}}" id="subtitle" required class="form-control"  aria-describedby="helpId" required>
-    <small id="helpId" class="text-muted">Insert subtitle</small>
-</div>
-<div class="form-group">
-    <label for="author">author</label>
-     <input type="text" name="author" value="{{$article->author}}" id="author" required class="form-control"  aria-describedby="helpId" required>
-    <small id="helpId" class="text-muted">Insert author</small>
-  </div>
+ <h1>Edit: " {{$article->title}} "</h1>
+    <form action="{{route('article.update', ['article'=>$article->id])}}" method="post">
+        @csrf
+        @method('PUT')
+
+        {{-- title --}}
+        <div class="form-group">
+            <label for="title">Title</label>
+            <input class="form-control" type="text" name="title" id="title" value="{{$article->title}}">
+        </div>
+        @error('title')
+            <div class="alert alert-danger">{{ $message }}</div>
+        @enderror
+
+        {{-- subtitle --}}
+        <div class="form-group">
+            <label for="subtitle">Subtitle</label>
+            <input class="form-control" type="text" name="subtitle" id="subtitle" value="{{$article->subtitle}}">
+        </div>
+        @error('subtitle')
+            <div class="alert alert-danger">{{ $message }}</div>
+        @enderror
+        
+
+    
+        <div class="form-group">
+            <label for="body">Body</label>
+            <textarea class="form-control" name="body" id="body" rows="3">{{$article->body}}</textarea>
+        </div>
+        @error('body')
+            <div class="alert alert-danger">{{ $message }}</div>
+        @enderror
+
+      
+        <div class="form-group">
+            <label for="author">Author</label>
+            <input class="form-control" type="text" name="author" id="author" value="{{$article->author}}">
+        </div>
+        @error('author')
+            <div class="alert alert-danger">{{ $message }}</div>
+        @enderror
+                <div class="form-group">
+            <label for="reading_time">Reading time</label>
+            <input class="form-control" type="text" name="reading_time" id="reading_time" value="{{$article->reading_time}}">
+        </div>
+        @error('reading_time')
+            <div class="alert alert-danger">{{ $message }}</div>
+        @enderror
   <div class="form-group">
-    <label for="body">body</label>
-     <input type="text" name="body" value="{{$article->body}}" id="body" required class="form-control"  aria-describedby="helpId" required>
-    <small id="helpId" class="text-muted">Insert body</small>
+    <label for="tags">Tags</label>
+    <select class="form-control" name="tags[]" id="tags" multiple>
+    @foreach ($tags as $tag)
+     <option value="{{$tag->id}}"> {{$tag->name}}</option>
+     
+        
+    @endforeach
+    </select>
   </div>
-    <div class="form-group">
-    <label for="reading_time">reading_time</label>
-     <input type="text" name="reading_time" value="{{$article->reading_time}}" id="reading_time" required class="form-control"  aria-describedby="helpId" required>
-    <small id="helpId" class="text-muted">Insert reading_time</small>
-  </div>
+        @error('tags')
+            <div class="alert alert-danger">{{ $message }}</div>
+        @enderror
 
-
-<button type="submit" class="btn btn-primary">
-    Submit
-</button>
-
-</form>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
 @endsection

@@ -41,7 +41,7 @@
             @foreach($categories as $item)
 
             <option value="{{$item->id}}" name="category_id">
-            {{$item->over18}}
+            {{$item->over18 ? 'si' : 'no'}}
             </option>
             @endforeach
 
@@ -65,6 +65,17 @@
     <label for="body">Body</label>
     <textarea class="form-control" name="body" id="body" rows="3" required></textarea>
     <small class="text-muted">Inserisci il body del post</small>
+  </div>
+  
+  <div class="form-group">
+    <label for="tags">Tags</label>
+    <select class="form-control" name="tags[]" id="tags" multiple>
+    @foreach ($tags as $tag)
+     <option value="{{$tag->id}}"> {{$tag->name}}</option>
+     
+        
+    @endforeach
+    </select>
   </div>
 
 <button type="submit" class="btn btn-primary">

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Article;
 use App\Category;
+use App\Tag;
 use Illuminate\Support\Facades\Validator;
 
 use Illuminate\Http\Request;
@@ -30,8 +31,9 @@ class ArticleController extends Controller
     public function create()
     {
         $categories = Category::all();
+        $tags = Tag::all();
 
-        return view('article.create', compact('categories'));   
+        return view('article.create', compact('categories','tags'));   
      }
 
     /**
@@ -42,7 +44,7 @@ class ArticleController extends Controller
      */
     public function store(Request $request)
     {
-        $validatedData = Validator::make($request->all(), [
+        $validateddata = $request->validate([ 
 
             'title' => 'required',
             'subtitle' => 'required',
@@ -50,12 +52,16 @@ class ArticleController extends Controller
             'body' => 'required',
             'reading_time' => 'required',
             'category_id' => 'required',
+            'tags' => 'exists:tags,id',
+
+        ]);
+
+        Article::create($validateddata);
+        $post = Article::orderBy('id', 'desc')->first();
+        $post->tags()->attach($request->tags);
 
 
-        ])->validate();
-        Article::create($validatedData);
-
-        return redirect()->route('article.index');
+        return redirect()->route('article.index', $post);
     }
 
     /**
@@ -77,7 +83,9 @@ class ArticleController extends Controller
      */
     public function edit(Article $article)
     {
-        return view('article.edit', compact('article'));
+
+        $tags = Tag::all();
+        return view('article.edit', compact('article', 'tags'));
     }
 
     /**
@@ -89,8 +97,15 @@ class ArticleController extends Controller
      */
     public function update(Request $request, Article $article)
     {
-        $data = $request->all();
-        $article->update($data);
+        $validateddata = $request->validate([
+            'title' => 'required',
+            'subtitle' => 'required',
+            'author' => 'required',
+            'body' => 'required',
+            'reading_time' => 'required'
+        ]);
+        $article->update($validateddata);
+        $article->tags()->sync($request->tags);
 
         return redirect()->route('article.index'); 
     }
