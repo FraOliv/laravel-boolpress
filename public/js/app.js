@@ -37876,7 +37876,7 @@ var render = function() {
                 _vm._v(" "),
                 _c("p", [_vm._v(" Tag Views:" + _vm._s(tag.views))]),
                 _vm._v(" "),
-                _c("p", [_vm._v(" Tag Views:" + _vm._s(tag.shares))]),
+                _c("p", [_vm._v(" Tag Shares:" + _vm._s(tag.shares))]),
                 _vm._v(" "),
                 _c("span", [
                   _vm._v(

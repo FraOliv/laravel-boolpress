@@ -7,7 +7,7 @@
                     <div class="card-body">
                         <p> Tag Name:{{tag.name }}</p>
                         <p> Tag Views:{{tag.views }}</p>
-                           <p> Tag Views:{{tag.shares }}</p>
+                           <p> Tag Shares:{{tag.shares }}</p>
 
                         <span>
                             Data :

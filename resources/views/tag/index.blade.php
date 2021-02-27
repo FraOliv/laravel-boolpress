@@ -31,7 +31,6 @@ Tags
         <td>{{$value->name}}</td>
         <td>{{$value->views}}</td>
         <td>{{$value->shares}}</td>
-      
         <td>
             <a href="{{route('tag.show', ['tag'=>$value->id])}}">View</a>
             <a href="{{route('tag.edit', ['tag'=>$value->id])}}">Edit</a>

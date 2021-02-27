@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Article;
 use App\Category;
+use Illuminate\Support\Facades\Validator;
 
 use Illuminate\Http\Request;
 
@@ -41,14 +42,19 @@ class ArticleController extends Controller
      */
     public function store(Request $request)
     {
-        $article = new Article();
-        $article->title = request('title');
-        $article->body = request('body');
-        $article->subtitle = request('subtitle');
-        $article->author = request('author');
-        $article->reading_time = request('reading_time');    
-  
-        $article->save();
+        $validatedData = Validator::make($request->all(), [
+
+            'title' => 'required',
+            'subtitle' => 'required',
+            'author' => 'required',
+            'body' => 'required',
+            'reading_time' => 'required',
+            'category_id' => 'required',
+
+
+        ])->validate();
+        Article::create($validatedData);
+
         return redirect()->route('article.index');
     }
 
