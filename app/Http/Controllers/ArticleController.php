@@ -55,6 +55,7 @@ class ArticleController extends Controller
             'tags' => 'exists:tags,id',
 
         ]);
+        dd($validateddata);
 
         Article::create($validateddata);
         $post = Article::orderBy('id', 'desc')->first();
@@ -97,12 +98,14 @@ class ArticleController extends Controller
      */
     public function update(Request $request, Article $article)
     {
+       
         $validateddata = $request->validate([
             'title' => 'required',
             'subtitle' => 'required',
             'author' => 'required',
             'body' => 'required',
-            'reading_time' => 'required'
+            'reading_time' => 'required',
+            'tags' => 'exists:tags,id',
         ]);
         $article->update($validateddata);
         $article->tags()->sync($request->tags);

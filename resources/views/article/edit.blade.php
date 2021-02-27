@@ -50,7 +50,8 @@ Edit
         @enderror
                 <div class="form-group">
             <label for="reading_time">Reading time</label>
-            <input class="form-control" type="text" name="reading_time" id="reading_time" value="{{$article->reading_time}}">
+           {{--  <input class="form-control" type="text" name="reading_time" id="reading_time" value="{{$article->reading_time}}"> --}}
+            <input type="number" name="reading_time" id="reading_time" class="form-control" value="{{$article->reading_time}}">
         </div>
         @error('reading_time')
             <div class="alert alert-danger">{{ $message }}</div>
@@ -60,8 +61,6 @@ Edit
     <select class="form-control" name="tags[]" id="tags" multiple>
     @foreach ($tags as $tag)
      <option value="{{$tag->id}}"> {{$tag->name}}</option>
-     
-        
     @endforeach
     </select>
   </div>

@@ -20,6 +20,9 @@ Article
             <th>Article's Subtitle</th>
             <th>Article's Body</th>
             <th>Reading time</th>
+            <th>Tag Name</th>
+            <th>Tag Views</th>
+            <th>Tag Shares</th>
             <th>Actions</th>
         </tr>
 
@@ -41,13 +44,33 @@ Article
         <td>{{$value->subtitle}}</td>
         <td>{{$value->body}}</td>
         <td>{{$value->reading_time}}</td>
-        <td>
-            <a href="{{route('article.show', ['article'=>$value->id])}}">View</a>
+        <td>@if (count($value->tags) > 0 )
+            @foreach ($value->tags as $tag)
+            <span class="tag"> {{$tag->name}} </span>
+            @endforeach
+            @else
+            N/a
+            @endif</td>
+        <td>@if (count($value->tags) > 0 )
+            @foreach ($value->tags as $tag)
+            <span class="tag"> {{$tag->views}} </span>
+            @endforeach
+            @else
+            N/a
+            @endif</td>
+        <td>@if (count($value->tags) > 0 )
+            @foreach ($value->tags as $tag)
+            <span class="tag"> {{$tag->shares}} </span>
+            @endforeach
+            @else
+            N/a
+            @endif</td>        
+        <td><a href="{{route('article.show', ['article'=>$value->id])}}">View</a>
             <a href="{{route('article.edit', ['article'=>$value->id])}}">Edit</a>
             <form action="{{route('article.destroy', ['article'=>$value->id])}}" method="post">
-                @csrf
-                @method('DELETE')
-                <button class="btn btn-danger" type="submit"> Delete</button>
+            @csrf
+            @method('DELETE')
+            <button class="btn btn-danger" type="submit"> Delete</button>
             </form>
         </td>
     </tr>
