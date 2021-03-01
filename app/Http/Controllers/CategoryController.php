@@ -36,11 +36,21 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        $category = new category();
-        $category->genre = request('genre');
-        $category->over18 = request('over18');
-        $category->save();
-        return redirect()->route('category.index');
+        $validateddata = $request->validate([
+
+            'genre' => 'required',
+            'over18' => 'required',
+         
+
+        ]);
+        dd($validateddata);
+
+        Category::create($validateddata);
+        $post = Category::orderBy('id', 'desc')->first();
+   
+
+
+        return redirect()->route('category.index', $post);
     }
 
     /**
@@ -74,10 +84,13 @@ class CategoryController extends Controller
      */
     public function update(Request $request, Category $category)
     {
-        $data = $request->all();
-        $category->update($data);
+        $validateddata = $request->validate([
+            'genre' => 'required',
+            'over18' => 'required',
+        ]);
+        $category->update($validateddata);
 
-        return redirect()->route('category.index'); 
+        return redirect()->route('category.index');
     }
 
     /**
